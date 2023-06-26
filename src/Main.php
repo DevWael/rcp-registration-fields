@@ -2,6 +2,8 @@
 
 namespace Devwael\RcpRegistrationFields;
 
+use Devwael\RcpRegistrationFields\FrontEnd;
+use Devwael\RcpRegistrationFields\Admin;
 use Devwael\RcpRegistrationFields\FrontEnd\UserFields;
 use Devwael\RcpRegistrationFields\I18n\Languages;
 
@@ -23,41 +25,55 @@ class Main {
 	/**
 	 * UserFields instance of user fields.
 	 *
-	 * @var UserFields instance of user fields.
+	 * @var FrontEnd\UserFields instance of user fields.
 	 */
-	private UserFields $user_fields;
+	private FrontEnd\UserFields $user_fields;
+
+	/**
+	 * UserFields instance of user fields.
+	 *
+	 * @var Admin\UserFields instance of user fields.
+	 */
+	private Admin\UserFields $admin_user_fields;
 
 
 	/**
 	 * User_Listing constructor.
 	 *
-	 * @param Languages  $languages Languages instance of languages and text domain loader.
-	 * @param UserFields $user_fields UserFields instance of user fields.
+	 * @param Languages           $languages         Languages instance of languages and text domain loader.
+	 * @param FrontEnd\UserFields $user_fields       UserFields instance of user fields.
+	 * @param Admin\UserFields    $admin_user_fields UserFields instance of user fields.
 	 */
 	private function __construct(
 		Languages $languages,
-		UserFields $user_fields
+		FrontEnd\UserFields $user_fields,
+		Admin\UserFields $admin_user_fields
 	) {
-		$this->languages   = $languages;
-		$this->user_fields = $user_fields;
+		$this->languages         = $languages;
+		$this->user_fields       = $user_fields;
+		$this->admin_user_fields = $admin_user_fields;
 	}
 
 	/**
 	 * Get the unique instance of the Main class.
 	 *
-	 * @param Languages|null  $languages Languages instance of languages and text domain loader.
-	 * @param UserFields|null $user_fields UserFields instance of user fields.
+	 * @param Languages|null        $languages   Languages instance of languages and text domain loader.
+	 * @param UserFields|null       $user_fields UserFields instance of user fields.
+	 * @param Admin\UserFields|null $admin_user_fields UserFields instance of user fields.
 	 *
 	 * @return self
 	 */
 	public static function instance(
 		Languages $languages = null,
-		UserFields $user_fields = null
+		FrontEnd\UserFields $user_fields = null,
+		Admin\UserFields $admin_user_fields = null
 	): self {
 		if ( null === self::$instance ) {
-			$languages_object   = $languages ?? new Languages(); // new instance of Languages object.
-			$user_fields_object = $user_fields ?? new UserFields(); // new instance of UserFields object.
-			self::$instance     = new self( $languages_object, $user_fields_object );
+			$languages_object         = $languages ?? new Languages(); // new instance of Languages object.
+			$user_fields_object       = $user_fields ?? new FrontEnd\UserFields(); // new instance of UserFields object.
+			$admin_user_fields_object = $admin_user_fields ??
+										new Admin\UserFields(); // new instance of UserFields object.
+			self::$instance           = new self( $languages_object, $user_fields_object, $admin_user_fields_object );
 			self::$instance->init();
 		}
 
@@ -78,5 +94,6 @@ class Main {
 
 		$this->languages->init(); // load all languages.
 		$this->user_fields->init(); // load all user fields.
+		$this->admin_user_fields->init(); // load all user fields.
 	}
 }
