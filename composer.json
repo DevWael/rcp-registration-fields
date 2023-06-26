@@ -1,0 +1,49 @@
+{
+    "name": "devwael/rcp-registration-fields",
+    "description": "Add custom fields to the RCP registration form.",
+    "type": "wordpress-plugin",
+    "license": "gpl+2",
+    "autoload": {
+        "psr-4": {
+            "Devwael\\RcpRegistrationFields\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "RcpRegistrationFields\\Tests\\Unit\\": "tests/PHPUnit/Unit/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "authors": [
+        {
+            "name": "devwael",
+            "email": "dev.ahmedwael@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "brain/monkey": "^2.6.1",
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0.0",
+        "phpcompatibility/phpcompatibility-wp": "^2.1.4",
+        "phpunit/phpunit": "^9.6.8",
+        "wp-coding-standards/wpcs": "^2.3.0"
+    },
+    "scripts": {
+        "test-unit": "@php ./vendor/bin/phpunit",
+        "test-unit-coverage": "@php ./vendor/bin/phpunit --coverage-clover coverage.xml",
+        "run-tests": [
+            "@phpcs",
+            "@test-unit"
+        ],
+        "phpcs": "@php ./vendor/bin/phpcs",
+        "phpcs-changed": "./bin/phpcs-changed.sh",
+        "phpcs:fix": "@php ./vendor/bin/phpcbf"
+    }
+}
