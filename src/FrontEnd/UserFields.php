@@ -20,11 +20,7 @@ class UserFields {
 				\esc_html_e( 'President email', 'rcp-registration-fields' );
 			?>
 				</label>
-			<input name="president_email" id="president_email" type="email" value="
-			<?php
-			echo \esc_attr( $president_email );
-			?>
-			"/>
+			<input name="president_email" id="president_email" type="email" value="<?php echo \esc_attr( $president_email ); ?>"/>
 		</p>
 		<p>
 			<label for="club_province">
@@ -32,11 +28,7 @@ class UserFields {
 				\esc_html_e( 'Club Province', 'rcp-registration-fields' );
 			?>
 				</label>
-			<input name="club_province" id="club_province" type="text" value="
-			<?php
-			echo \esc_attr( $club_province );
-			?>
-			"/>
+			<input name="club_province" id="club_province" type="text" value="<?php echo \esc_attr( $club_province ); ?>"/>
 		</p>
 		<p>
 			<label for="number_of_members">
@@ -44,11 +36,7 @@ class UserFields {
 				\esc_html_e( 'Number of Members', 'rcp-registration-fields' );
 			?>
 				</label>
-			<input name="number_of_members" id="number_of_members" type="number" min="0" step="1" value="
-			<?php
-			echo \esc_attr( $number_of_members );
-			?>
-			"/>
+			<input name="number_of_members" id="number_of_members" type="number" min="0" step="1" value="<?php echo \esc_attr( $number_of_members ); ?>"/>
 		</p>
 		<p>
 			<label for="newsletter_email">
@@ -56,11 +44,7 @@ class UserFields {
 				\esc_html_e( 'Newsletter Email', 'rcp-registration-fields' );
 			?>
 				</label>
-			<input name="newsletter_email" id="newsletter_email" type="email" value="
-			<?php
-			echo \esc_attr( $newsletter_email );
-			?>
-			"/>
+			<input name="newsletter_email" id="newsletter_email" type="email" value="<?php echo \esc_attr( $newsletter_email ); ?>"/>
 		</p>
 		<?php
 	}
