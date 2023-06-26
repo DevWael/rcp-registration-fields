@@ -57,7 +57,7 @@ class UserFields {
 	 *
 	 * @return void
 	 */
-	public function init() {
+	public function init(): void {
 		add_action( 'rcp_edit_member_after', [ $this, 'fields' ] );
 	}
 }
