@@ -65,7 +65,7 @@ class Save {
 	 * @return void
 	 */
 	public function init(): void {
-		add_action( 'rcp_form_processing', [ $this, 'validate' ] );
+		add_action( 'rcp_form_processing', [ $this, 'save' ], 10, 2 );
 		add_action( 'rcp_user_profile_updated', [ $this, 'profile_save' ] );
 		add_action( 'rcp_edit_member', [ $this, 'profile_save' ] );
 	}
